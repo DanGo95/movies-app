@@ -1,0 +1,57 @@
+<div class="row animate__animated animate__fadeIn animate__faster mt-3" *ngIf="movie">
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-outline-info p-3" (click)="onReturn()">
+            <i class="fas fa-times-circle"></i>
+        </button>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <img [src]="movie.poster_path | poster" [alt]="movie.title" class="img-thumbnail">
+        </div>
+
+        <div class="col-md-6">
+            <h3 class="text-center">{{ movie.title }}</h3>
+
+            <div class="row text-center">
+                <div class="col">
+                    <star-rating [value]="movie.vote_average" [totalstars]="10" checkedcolor="yellow" uncheckedcolor="grey" size="15px" [readonly]="false"></star-rating>
+                </div>
+                <div class="col text-white">
+                    {{ movie.vote_average | number:'1.1-2' }}
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col text-white">
+                    {{ movie.overview }}
+                </div>
+            </div>
+
+            <h4 class="text-center mt-3">Trailer</h4>
+            <hr>
+
+            <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" [src]="videoUrl | video | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <h4 class="text-center mt-3">Actores</h4>
+            <hr>
+
+            <div class="row mt-3" *ngIf="cast.length > 0">
+                <div class="col">
+                    <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <h4 class="text-center mt-3">Recomendaciones</h4>
+        <hr>
+        <app-movies-poster-grid *ngIf="movies.length > 0" [movies]="movies"></app-movies-poster-grid>
+    </div>
+
+</div>

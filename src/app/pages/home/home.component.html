@@ -1,0 +1,9 @@
+<div class="row mt-2" *ngIf="movies.length > 0">
+    <div class="col">
+        <app-slideshow [movies]="moviesSlideshow"></app-slideshow>
+    </div>
+</div>
+
+<h1 class="mt-4 text-center">Movies</h1>
+<hr>
+<app-movies-poster-grid *ngIf="movies.length > 0" [movies]="movies"></app-movies-poster-grid>
