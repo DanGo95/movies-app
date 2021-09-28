@@ -4,7 +4,7 @@ Proyecto creado con Angular, utilizando la API de TheMovieDB, la cual deben agre
 
 La aplicación cuenta con 'infinite scroll' y búsqueda de películas, pudiendo observar los actores que participan en ella.
 
-![ScreenShot](https://imgur.com/veifXI3)
+![ScreenShot](https://i.imgur.com/veifXI3.png)
 
 ## Dependencias
 
