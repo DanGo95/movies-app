@@ -1,6 +1,11 @@
 # Movies-app
 
-Movies-app es un sitio web donde se puede observar información y recomendaciones sobre películas. 
+Movies-app es un sitio web donde se puede observar información y recomendaciones sobre películas.
+
+## Demo
+
+Ingrese a la dirección: https://movies-app-f4891.web.app/home para ver una demostración del proyecto.
+
 
 ![ScreenShot](https://i.imgur.com/veifXI3.png)
 
