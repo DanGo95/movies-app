@@ -3,10 +3,10 @@
         <a class="navbar-brand" routerLink="/home">Movies</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <form class="d-flex">
+            <div class="d-flex">
                 <input #txtSearch (keyup.enter)="searchMovie( txtSearch.value )" class="form-control me-2" type="search" placeholder="Buscar película" aria-label="Search">
                 <button (click)="searchMovie( txtSearch.value )" class="btn btn-outline-success p-3" type="submit"><i class="fas fa-search"></i></button>
-            </form>
+            </div>
         </div>
     </div>
 </nav>

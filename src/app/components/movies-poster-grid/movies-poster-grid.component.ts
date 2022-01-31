@@ -16,10 +16,7 @@ export class MoviesPosterGridComponent implements OnInit {
   ngOnInit(): void {}
 
   onMovieClick( movie: Movie ) {
-    this.router.navigate(['/movie', movie.id])
-    .then(() => {
-      window.location.reload();
-    });
+    this.router.navigate(['/movie', movie.id]);
   }
 
 

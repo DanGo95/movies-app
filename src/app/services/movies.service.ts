@@ -14,13 +14,14 @@ export class MoviesService {
 
   private url: string = 'https://api.themoviedb.org/3';
   private page = 1;
+  // previene múltiples llamadas a la API
   public loading = false;
 
   constructor( private http: HttpClient ) { }
 
   get params() {
     return {
-      api_key: 'YOUR-API-KEY',
+      api_key: '6cf4334ef3c3e3f9a2a0937f72fc1ae8',
       language: 'es-ES',
       page: this.page.toString()
     }

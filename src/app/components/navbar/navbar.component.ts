@@ -15,10 +15,8 @@ export class NavbarComponent implements OnInit {
 
   searchMovie( text: string ) {
     text = text.trim();
-
-    
+ 
     if ( text.length === 0 ) { return; }
-    console.log(text);
     
     this.router.navigate(['/search', text]);
   }
