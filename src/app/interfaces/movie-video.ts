@@ -1,4 +1,9 @@
-export interface MovieVideos {
+export interface MovieVideo {
+    id: number;
+    results: Video[]
+}
+
+export interface Video {
     iso_639_1: string;
     iso_3166_1: string;
     name: string;

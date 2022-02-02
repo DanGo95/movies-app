@@ -5,7 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Movie, MoviesResponse } from '../interfaces/movies-response';
 import { MovieResponse } from '../interfaces/movie-response';
 import { Cast, CreditsReponse } from '../interfaces/credits-response';
-import { MovieVideos } from '../interfaces/movie-videos';
+import { MovieVideo, Video } from '../interfaces/movie-video';
 
 @Injectable({
   providedIn: 'root'
@@ -74,10 +74,10 @@ export class MoviesService {
       )
   }
 
-  getVideo( id: number ) {
-    return this.http.get<MovieVideos>(`${ this.url }/movie/${ id }/videos`, { params: this.params })
+  getVideo( id: number ): Observable<Video> {
+    return this.http.get<MovieVideo>(`${ this.url }/movie/${ id }/videos`, { params: this.params })
       .pipe(
-        map( (videos: any) => videos.results)
+        map( (videos) => videos.results[0])
       )
   }
 

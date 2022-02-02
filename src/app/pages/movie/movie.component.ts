@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MoviesService } from '../../services/movies.service';
 import { combineLatest } from 'rxjs';
-import { MovieVideos } from '../../interfaces/movie-videos';
 import { Movie } from '../../interfaces/movies-response';
 
 @Component({
@@ -24,28 +23,29 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const { id } = this.activatedRoute.snapshot.params;
+    this.activatedRoute.params.subscribe( params => {
 
-    combineLatest([
-      this.moviesService.getMovie(id),
-      this.moviesService.getCast(id),
-      this.moviesService.getRecommendations(id)
-    ]).subscribe( ([movie, cast, movies]) => {
-      if ( !movie ) {
-        this.router.navigateByUrl('/home');
-        return;
-      }
-      this.movies = movies;
-      this.movie = movie;
-      this.cast = cast.filter( actor => actor.profile_path !== null );
-      
-      this.moviesService.getVideo(this.movie.id).subscribe( (movies: MovieVideos[]) => {
-        if (movies.length > 0) {
-          this.videoUrl = movies[0].key;
+      let { id } = params;
+  
+      combineLatest([
+        this.moviesService.getMovie(id),
+        this.moviesService.getCast(id),
+        this.moviesService.getRecommendations(id),
+        this.moviesService.getVideo(id)
+      ]).subscribe( ([movie, cast, recomendations, video]) => {
+        if ( !movie ) {
+          this.router.navigateByUrl('/home');
+          return;
         }
+        this.movie = movie;
+        this.cast = cast.filter( actor => actor.profile_path !== null );
+        this.videoUrl = video.key
+        this.movies = recomendations;
+      }, err => {
+        this.router.navigateByUrl('/home');
       })
-      
     })
+
   }
 
 
